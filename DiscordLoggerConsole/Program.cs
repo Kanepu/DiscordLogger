@@ -111,6 +111,36 @@ namespace DiscordLoggerConsole
                 }
             };
 
+            client.MessageUpdated += async e =>
+            {
+                try
+                {
+                    string con = e.Message.Content;
+                    if (e.Message.Attachments.Count != 0)
+                        foreach (var aa in e.Message.Attachments)
+                            con += Environment.NewLine + aa.Url;
+                    string channel = e.Channel?.Name;
+                    string guild = e.Guild?.Name;
+                    string base64of0attachment = string.Empty;
+                    if (!(e.Message.Attachments.Equals(null) || e.Message.Attachments.Count < 1))
+                        base64of0attachment = Convert.ToBase64String(new WebClient().DownloadData(e.Message.Attachments[0].Url));
+                    string content = string.Empty;
+                    if (database.FindWithQueryAsync<MessageData>("select * from MessageData where messageid = ?", e.Message.Id.ToString()).Result.afteredit != null)
+                        content += (await database.FindWithQueryAsync<MessageData>("select * from MessageData where messageid = ?", e.Message.Id.ToString())).afteredit + Environment.NewLine;
+                    content += e.Message.Content;
+                    await database.ExecuteAsync("UPDATE MessageData SET isedited = ?, afteredit = ? WHERE messageid = ?;", e.Message.IsEdited, content, e.Message.Id.ToString());
+                }
+                catch (Exception ee)
+                {
+                    Console.WriteLine(ee.Message);
+                }
+            };
+
+            client.MessageDeleted += async e =>
+            {
+                await database.ExecuteAsync("UPDATE logged SET isdeleted = ? WHERE messageid = ?;", true, e.Message.Id.ToString());
+            };
+
             await client.ConnectAsync();
             await Task.Delay(-1);
         }
