@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 namespace DiscordLoggerConsole.Commands.CheckBase
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public partial class AdminChecker : CheckBaseAttribute
+    public partial class OwnerCheck : CheckBaseAttribute
     {
         public override async Task<bool> ExecuteCheckAsync(CommandContext ctx, bool help)
         {
-            if (Program.settings.admins.Contains(ctx.Message.Author.Id) || Program.settings.owner.Equals(ctx.Message.Author.Id))
+            if (Program.settings.owner.Equals(ctx.Message.Author.Id))
                 return true;
             return false;
         }

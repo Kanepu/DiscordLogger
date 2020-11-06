@@ -7,12 +7,14 @@ namespace DiscordLoggerConsole.Classes
     {
         // SETTINGS YOU CAN CHANGE
         public static string configname = "config";
-        public static string token = "";
 
         // SETTINGS YOU SHOULDNT CHANGE
         public List<ulong> admins { get; set; }
+
+        public ulong owner { get; set; }
         public List<ulong> guildstostalk { get; set; }
         public List<string> prefixes { get; set; }
+        public string token { get; set; }
         public string databasename { get; set; }
         public string status { get; set; }
         public ActivityType statusmode { get; set; }
@@ -23,13 +25,15 @@ namespace DiscordLoggerConsole.Classes
             return new settings
             {
                 admins = new List<ulong>(),
+                owner = 0,
                 guildstostalk = new List<ulong>(),
                 prefixes = new List<string>() { "!" },
                 databasename = "main",
+                token = string.Empty,
                 status = string.Empty,
                 statusmode = ActivityType.Playing,
                 userstatus = UserStatus.Online
-        };
+            };
         }
     }
 }

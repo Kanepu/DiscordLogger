@@ -1,0 +1,13 @@
+﻿{
+  "admins": [],
+  "owner": 0,
+  "guildstostalk": [],
+  "prefixes": [
+    "!"
+  ],
+  "token": "",
+  "databasename": "main",
+  "status": "",
+  "statusmode": 0,
+  "userstatus": "online"
+}
