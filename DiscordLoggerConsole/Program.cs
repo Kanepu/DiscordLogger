@@ -138,7 +138,7 @@ namespace DiscordLoggerConsole
 
             client.MessageDeleted += async e =>
             {
-                await database.ExecuteAsync("UPDATE logged SET isdeleted = ? WHERE messageid = ?;", true, e.Message.Id.ToString());
+                await database.ExecuteAsync("UPDATE MessageData SET isdeleted = ? WHERE messageid = ?;", true, e.Message.Id.ToString());
             };
 
             await client.ConnectAsync();
