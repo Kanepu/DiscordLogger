@@ -29,16 +29,20 @@ This is the console version of the bot
 **Setting the token**
 have your token ready (refer to [this](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token) guide to find it)
 navigate to [config.json](https://github.com/Kanepu/DiscordLogger/blob/master/DiscordLoggerConsole/config.json) in the project and set the [token](https://github.com/Kanepu/DiscordLogger/blob/master/DiscordLoggerConsole/config.json#L8) to your token like this
-BEFORE:should now
+
+BEFORE:
 ![BEFORE](https://i.ibb.co/FxrtX7Z/Screenshot-2020-11-07-143234.png)
+
 AFTER (token was covered):
 ![AFTER](https://i.ibb.co/SNTgSkK/Screenshot-2020-11-07-144307.png)
 
 **Setting the owner**
 have your discord user id ready (refer to [this](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) guide to find it)
 navigate to [config.json](https://github.com/Kanepu/DiscordLogger/blob/master/DiscordLoggerConsole/config.json) in the project and set the [owner](https://github.com/Kanepu/DiscordLogger/blob/master/DiscordLoggerConsole/config.json#L3) to your user id like this
+
 BEFORE:
 ![BEFORE](https://i.ibb.co/kg38ZQz/Screenshot-2020-11-07-145001.png)
+
 AFTER:
 ![AFTER](https://i.ibb.co/ct6L4pd/Screenshot-2020-11-07-150350.png)
 
