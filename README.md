@@ -2,6 +2,7 @@
 
 # DiscordLogger
 DiscordLogger is a discord bot that listens to messages sent in chosen guilds and stores them in a database
+
 Things it stores:
 
  - date
