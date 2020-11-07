@@ -14,8 +14,8 @@ namespace DiscordLoggerConsole.Commands
 {
     public class StalkingCommands : BaseCommandModule
     {
+        //https://stackoverflow.com/a/1344242/14147191
         public static Random random = new Random();
-
         public static string RandomString(int length)
         {
             string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -23,6 +23,7 @@ namespace DiscordLoggerConsole.Commands
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
+        //https://stackoverflow.com/a/11153588/14147191
         public static void CompressFile(string path)
         {
             FileStream sourceFile = File.OpenRead(path);
