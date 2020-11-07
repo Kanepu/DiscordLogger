@@ -59,10 +59,11 @@ namespace DiscordLoggerConsole
             commands.RegisterCommands<StalkingCommands>();
             commands.RegisterCommands<StalkingManagementCommands>();
 
-            if (!string.IsNullOrWhiteSpace(settings.status))
                 client.Ready += async e =>
                 {
-                    await client.UpdateStatusAsync(new DSharpPlus.Entities.DiscordActivity(settings.status, settings.statusmode), settings.userstatus);
+                    if (!string.IsNullOrWhiteSpace(settings.status))
+                        await client.UpdateStatusAsync(new DSharpPlus.Entities.DiscordActivity(settings.status, settings.statusmode), settings.userstatus);
+                    else await client.UpdateStatusAsync(null, settings.userstatus);
                 };
 
             client.MessageCreated += async e =>

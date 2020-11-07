@@ -75,6 +75,9 @@ namespace DiscordLoggerConsole.Commands
                 if (File.Exists($"{settings.configname}.json"))
                     Program.settings = JsonConvert.DeserializeObject<settings>(await File.ReadAllTextAsync($"{settings.configname}.json"));
                 else Program.settings = settings.GetDefault();
+                if (!string.IsNullOrWhiteSpace(Program.settings.status))
+                    await Program.client.UpdateStatusAsync(new DiscordActivity(Program.settings.status, Program.settings.statusmode), Program.settings.userstatus);
+                else await Program.client.UpdateStatusAsync(null, Program.settings.userstatus);
                 stopwatch.Stop();
                 await ctx.RespondAsync("", false, new DiscordEmbedBuilder
                 {

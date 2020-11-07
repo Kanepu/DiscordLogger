@@ -214,7 +214,7 @@ namespace DiscordLoggerConsole.Commands
                 stopwatch.Start();
                 var all = await Program.database.QueryAsync<MessageData>("Select * From MessageData Where messageid = ?", messageid);
                 if (string.IsNullOrWhiteSpace(all?.Count.ToString()) && all?.Count < 1)
-                    throw new Exception("Messages by that date were not found");
+                    throw new Exception("Message by that id was not found");
                 string filename = RandomString(10) + ".txt";
                 foreach (var y in all)
                     await File.AppendAllTextAsync(filename, "[" + y.date + "] [" + y.datetime.ToString() + "] [MID:" + y.messageid + "] [" + y.guild + " | " + y.channel + "] " + y.author + " (ORIGINAL CONTENT):[" + y.content + "] (EDITED CONTENT):[ " + y.afteredit + "] (ATTACHMENTS COUNT):[" + y.attachmentscount + "] (EMBEDS COUNT):[" + y.embedcount + "] (ISEDITED):[" + y.isedited + "] (ISDELETED):[" + y.isdeleted + "]" + Environment.NewLine);
@@ -247,7 +247,7 @@ namespace DiscordLoggerConsole.Commands
                 stopwatch.Start();
                 var all = await Program.database.QueryAsync<MessageData>("Select * From MessageData");
                 if (string.IsNullOrWhiteSpace(all?.Count.ToString()) && all?.Count < 1)
-                    throw new Exception("Messages by that date were not found");
+                    throw new Exception("Messages by that keyword were not found");
                 string filename = RandomString(10) + ".txt";
                 foreach (var y in all)
                     if ((!string.IsNullOrWhiteSpace(y.content) && y.content.Contains(contents)) || (!string.IsNullOrWhiteSpace(y.afteredit) && y.afteredit.Contains(contents)))
