@@ -122,11 +122,7 @@ Default config:
         //
         // Summary:
         //     Indicates the user is watching something.
-        Watching = 3,
-        //
-        // Summary:
-        //     Indicates the current activity is a custom status.
-        Custom = 4
+        Watching = 3
 ```
 **userstatus**: controls the discord status of the bot (refer to [this](https://dsharpplus.emzi0767.com/api/DSharpPlus.Entities.UserStatus.html) for the names)
 ## DiscordLoggerWPF (NOT FINISHED)
